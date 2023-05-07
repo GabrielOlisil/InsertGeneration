@@ -230,6 +230,8 @@ while (looping)
                 }
             }
 
+            Console.WriteLine($"Enter the max date: (yyyy/MM/dd)");
+
 
             DateTime maxDateValue = DateTime.Now;
 
@@ -258,6 +260,9 @@ while (looping)
 
 
             break;
+        case DataType.Bool:
+            attributes.Add(new Bool(dt, name));
+            break;
 
     }
 
@@ -267,7 +272,7 @@ while (looping)
     Console.WriteLine($"Want to add more attributes? [S/n]");
     string? option = Console.ReadLine();
 
-    if (option is null || option == "n")
+    if (option is null || option.ToLower() == "n")
     {
         looping = false;
     }
@@ -276,9 +281,20 @@ while (looping)
 
 }
 
+Console.WriteLine($"Prime the number of inserts to be generated");
+string? totalNumberInserts = Console.ReadLine();
+
+
+while (totalNumberInserts is null || !totalNumberInserts.All(char.IsDigit))
+{
+    Console.WriteLine($"Not valid, prime a integer number");
+    totalNumberInserts = Console.ReadLine();
+}
+
+
 Query query = new Query(attributes);
 
-query.Build(new MysqlQueryGenerator(), tableName, 10);
+query.Build(new MysqlQueryGenerator(), tableName, int.Parse(totalNumberInserts));
 
 
 
