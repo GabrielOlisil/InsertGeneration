@@ -10,6 +10,8 @@ public class Varchar : AbstractAttribute
 
     public VarcharRepresentation VarcharRepresentation { get; private set; }
 
+
+
     public Varchar(DataType type, string name, int maxLenght, VarcharRepresentation varcharRepresentation) : base(type, name)
     {
         MaxLenght = maxLenght;
