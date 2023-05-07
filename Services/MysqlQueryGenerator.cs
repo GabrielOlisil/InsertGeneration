@@ -21,74 +21,48 @@ public class MysqlQueryGenerator : IQueryGenerator
             {
                 sb.Append(",");
             }
+            else
+            {
+                sb.AppendLine(")");
+            }
         }
-        sb.AppendLine(") ");
 
         for (int i = 0; i < quantidade; i++)
         {
 
-            sb.Append("VALUES");
+            sb.Append("VALUES (");
 
-            sb.Append(" (");
             foreach (AbstractAttribute attr in attributes)
             {
-                switch (attr.Type)
+
+                if (attr.Type == DataType.Varchar || attr.Type == DataType.Date)
                 {
-                    case DataType.Varchar:
 
-                        Varchar? castedAttribute = attr as Varchar;
-
-
-                        switch (castedAttribute?.VarcharRepresentation)
-                        {
-                            case VarcharRepresentation.Name:
-                                sb.Append("'Gabriel'");
-                                break;
-                            case VarcharRepresentation.Email:
-                                sb.Append("'Gabriel@gmail.com'");
-                                break;
-                            case VarcharRepresentation.CPF:
-                                sb.Append("'123.123.132-12'");
-                                break;
-                            case VarcharRepresentation.CNPJ:
-                                sb.Append("'123123.1312-3131/21'");
-                                break;
-                            case VarcharRepresentation.Text:
-                                sb.Append("'TextoTextoTexto'");
-                                break;
-                        }
-
-
-                        break;
-                    case DataType.Bool:
-                        sb.Append("true");
-                        break;
-                    case DataType.Date:
-                        sb.Append("2020-10-02");
-                        break;
-                    case DataType.Double:
-                        sb.Append("123.12");
-                        break;
-                    case DataType.Int:
-                        sb.Append("12");
-                        break;
-
+                    sb.Append($"'{attr.Value}'");
                 }
+                else
+                {
+                    sb.Append(attr.Value);
+                }
+
+
                 if (attr != attributes.Last())
                 {
                     sb.Append(",");
                 }
-            }
-            sb.Append(")");
+                else
+                {
+                    if (i == quantidade - 1)
+                    {
+                        sb.AppendLine(");");
+                    }
+                    else
+                    {
+                        sb.AppendLine("),");
 
-            if (i != quantidade - 1)
-            {
-                sb.AppendLine(",");
-            }
-            else
-            {
+                    }
+                }
 
-                sb.Append(";");
             }
         }
 
