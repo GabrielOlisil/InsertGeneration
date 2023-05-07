@@ -4,9 +4,7 @@ public enum DataType
 {
     Varchar = 1,
     Int,
-    Float,
+    Double,
     Bool,
     Date,
-    Name,
-    Email,
 }
