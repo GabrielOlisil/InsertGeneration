@@ -1,12 +1,14 @@
 ﻿global using System.Globalization;
-
 using InsertGeneration.Entities;
 using InsertGeneration.Entities.Abstract;
 using InsertGeneration.Entities.DataTypes;
 using InsertGeneration.Services;
+
+
+
 bool looping = true;
 
-List<AbstractAttribute> attributes = new List<AbstractAttribute>();
+List<AbstractAttribute> attributes = new();
 
 
 Console.WriteLine($"MySql Insert generator");
@@ -124,7 +126,7 @@ while (looping)
 
 
 
-            attributes.Add(new Varchar(dt, name, maxLenght, representation));
+            attributes.Add(new Varchar(name, maxLenght, representation));
 
             break;
         case DataType.Int:
@@ -164,7 +166,7 @@ while (looping)
                 maxValue = maxIntValue;
             }
 
-            attributes.Add(new Int(dt, name, minValue, maxValue));
+            attributes.Add(new Int(name, minValue, maxValue));
 
             break;
 
@@ -203,7 +205,7 @@ while (looping)
                 }
             }
 
-            attributes.Add(new DoubleType(dt, name, minDoubleValue, maxDoubleValue));
+            attributes.Add(new DoubleType(name, minDoubleValue, maxDoubleValue));
 
             break;
 
@@ -254,14 +256,14 @@ while (looping)
 
 
 
-            attributes.Add(new Date(dt, name, minDateValue, maxDateValue));
+            attributes.Add(new Date(name, minDateValue, maxDateValue));
 
 
 
 
             break;
         case DataType.Bool:
-            attributes.Add(new Bool(dt, name));
+            attributes.Add(new Bool(name));
             break;
 
     }

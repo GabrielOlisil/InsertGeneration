@@ -12,7 +12,7 @@ public class Varchar : AbstractAttribute
 
 
 
-    public Varchar(DataType type, string name, int maxLenght, VarcharRepresentation varcharRepresentation) : base(type, name)
+    public Varchar(string name, int maxLenght, VarcharRepresentation varcharRepresentation) : base(name)
     {
         MaxLenght = maxLenght;
         VarcharRepresentation = varcharRepresentation;

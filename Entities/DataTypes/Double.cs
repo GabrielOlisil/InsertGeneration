@@ -10,7 +10,7 @@ public class DoubleType : AbstractAttribute
     public double MaxValue { get; }
 
 
-    public DoubleType(DataType type, string name, double minValue, double maxValue) : base(type, name)
+    public DoubleType(string name, double minValue, double maxValue) : base(name)
     {
         MinValue = minValue;
         MaxValue = maxValue;

@@ -6,5 +6,5 @@ namespace InsertGeneration.Entities.DataTypes;
 public class Bool : AbstractAttribute
 {
 
-    public Bool(DataType type, string name) : base(type, name) { }
+    public Bool(string name) : base(name) { }
 }

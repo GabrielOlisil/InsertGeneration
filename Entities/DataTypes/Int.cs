@@ -9,7 +9,7 @@ public class Int : AbstractAttribute
     public int MaxValue { get; }
 
 
-    public Int(DataType type, string name, int minValue, int maxValue) : base(type, name)
+    public Int(string name, int minValue, int maxValue) : base(name)
     {
         MinValue = minValue;
         MaxValue = maxValue;

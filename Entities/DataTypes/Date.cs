@@ -11,7 +11,7 @@ public class Date : AbstractAttribute
 
     public DateTime? value = null;
 
-    public Date(DataType type, string name, DateTime minValue, DateTime maxValue) : base(type, name)
+    public Date(string name, DateTime minValue, DateTime maxValue) : base(name)
     {
         MinValue = minValue;
         MaxValue = maxValue;

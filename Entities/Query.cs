@@ -21,14 +21,11 @@ public class Query
 
         foreach (AbstractAttribute attr in SqlAttributes)
         {
-            switch (attr.Type)
+            switch (attr)
             {
-                case DataType.Varchar:
+                case Varchar var:
 
-                    Varchar? castedAttribute = attr as Varchar;
-
-
-                    switch (castedAttribute?.VarcharRepresentation)
+                    switch (var.VarcharRepresentation)
                     {
                         case VarcharRepresentation.Name:
                             attr.Value = "Gabriel de Oliveira Silva";
@@ -47,24 +44,24 @@ public class Query
                             attr.Value = "Qualquer coisa";
                             break;
                     }
-
-
                     break;
-                case DataType.Bool:
+
+                case Bool:
                     attr.Value = "false";
                     break;
-                case DataType.Date:
+
+                case Date:
                     attr.Value = "2020-10-02";
                     break;
-                case DataType.Double:
+
+                case DoubleType:
                     attr.Value = "202.00";
                     break;
-                case DataType.Int:
+
+                case Int:
                     attr.Value = "202";
                     break;
-
             }
-
         }
 
         string query = queryGenerator.SqlBuild(SqlAttributes, tableName, quantidade);

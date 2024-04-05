@@ -35,7 +35,7 @@ public class MysqlQueryGenerator : IQueryGenerator
             foreach (AbstractAttribute attr in attributes)
             {
 
-                if (attr.Type == DataType.Varchar || attr.Type == DataType.Date)
+                if (attr is Varchar || attr is Date)
                 {
 
                     sb.Append($"'{attr.Value}'");
